@@ -1,0 +1,17 @@
+from django.db import models
+
+
+class ChannelVideo(models.Model):
+    title = models.CharField(max_length=255, unique=True)
+    data = models.TextField()
+    thumbnail = models.ImageField(upload_to='videos/thumbnails/', blank=True, null=True)
+    description = models.TextField(max_length=150, blank=True)
+    likes = models.IntegerField(default=0)
+    dislikes = models.IntegerField(default=0)
+    upload_time = models.DateTimeField(auto_now_add=True)
+    views = models.IntegerField(default=0)
+    categories = models.ManyToManyField('Category', related_name='videos')
+    video_file = models.FileField(upload_to='channel_videos/', null=True, blank=True)
+
+    def __str__(self):
+        return self.title

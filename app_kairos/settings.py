@@ -22,29 +22,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
 
-    # Votre application pour la gestion des médias
-    'storages',  # Assurez-vous que cette application est correctement configurée
+    'storages',
 
     # Applications de votre projet
-    'MainApp.category',
     'MainApp.channel',
-    'MainApp.filter',
     'MainApp.messenger',
     'MainApp.podcast',
     'MainApp.search',
-    'MainApp.stream',
-
-    # Applications réutilisables
-    'Reusables.comment',
-    'Reusables.description',
-    'Reusables.dislike',
-    'Reusables.feed',
-    'Reusables.like',
-    'Reusables.message',
-    'Reusables.notification',
-    'Reusables.poll',
-    'Reusables.post',
+    'MainApp.live_stream',
 
     # Application pour les utilisateurs
     'Users',
@@ -93,6 +80,18 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.SHA1PasswordHasher',
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+    'django.contrib.auth.hashers.CryptPasswordHasher',
+]
+
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -130,11 +129,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Configuration pour les fichiers médias
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'app_media_bank')
+# Medias files
+MEDIA_URL = '/Medias/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'Medias')
 
-# Si vous avez des sous-dossiers spécifiques pour les vidéos et les vignettes
 VIDEO_MEDIA_ROOT = os.path.join(MEDIA_ROOT, 'videos')
 THUMBNAIL_MEDIA_ROOT = os.path.join(MEDIA_ROOT, 'thumbnails')
 

@@ -2,7 +2,7 @@
 
 from rest_framework import serializers
 
-from MainApp.podcast.models.episode import Episode
+from MainApp.podcast.models.podcast_episode import Episode
 
 
 class EpisodeSerializer(serializers.ModelSerializer):

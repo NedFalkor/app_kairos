@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-from MainApp.category.models.category import Category
+from MainApp.search.models.category import Category
 from Users.models import CustomUser
 
 
@@ -10,7 +10,6 @@ class Podcast(models.Model):
     description = models.TextField()
     creator = models.ForeignKey(CustomUser, related_name='created_podcasts', on_delete=models.SET_NULL, null=True)
     cover_image = models.ImageField(upload_to='podcasts/covers/', blank=True, null=True)
-    category = models.CharField(max_length=100, blank=True)
     publish_date = models.DateTimeField(default=timezone.now)
     categories = models.ManyToManyField(Category, related_name='podcasts')
 
