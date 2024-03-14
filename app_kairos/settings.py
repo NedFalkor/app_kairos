@@ -27,11 +27,11 @@ INSTALLED_APPS = [
     'storages',
 
     # Applications de votre projet
-    'MainApp.channel',
-    'MainApp.messenger',
-    'MainApp.podcast',
-    'MainApp.search',
-    'MainApp.live_stream',
+    'App.channel',
+    'App.messenger',
+    'App.podcast',
+    'App.search',
+    'App.live_stream',
 
     # Application pour les utilisateurs
     'Users',
@@ -129,9 +129,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Medias files
-MEDIA_URL = '/Medias/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'Medias')
+# app_medias files
+MEDIA_URL = '/app_medias/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'app_medias')
 
 VIDEO_MEDIA_ROOT = os.path.join(MEDIA_ROOT, 'videos')
 THUMBNAIL_MEDIA_ROOT = os.path.join(MEDIA_ROOT, 'thumbnails')
