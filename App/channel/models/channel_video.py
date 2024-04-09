@@ -10,7 +10,7 @@ class ChannelVideo(models.Model):
     video_dislikes = models.IntegerField(default=0)
     video_upload_time = models.DateTimeField(auto_now_add=True)
     video_views = models.IntegerField(default=0)
-    categories = models.ManyToManyField('Category', related_name='videos')
+    video_categories = models.ManyToManyField('Category', related_name='videos')
     video_file = models.FileField(upload_to='channel_videos/', null=True, blank=True)
 
     def __str__(self):

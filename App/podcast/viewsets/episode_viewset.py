@@ -1,11 +1,8 @@
-# views.py
-
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 
-from .models import Podcast
-from .serializers import PodcastSerializer
-from .permissions import IsCreatorOrAdmin  # Adjust import paths as needed
+from app_kairos.App.podcast.models.podcast import Podcast
+
 
 class PodcastViewSet(viewsets.ModelViewSet):
     queryset = Podcast.objects.all()
@@ -28,5 +25,3 @@ class PodcastViewSet(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    # No need to override list, retrieve, update, and destroy actions unless custom behavior is needed

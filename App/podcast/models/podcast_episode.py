@@ -8,21 +8,21 @@ from Users.models import CustomUser
 
 class PodcastEpisode(models.Model):
     podcast = models.ForeignKey(Podcast, related_name='episodes', on_delete=models.CASCADE)
-    episode_number = models.PositiveIntegerField()
-    play_count = models.PositiveIntegerField(default=0)
-    title = models.CharField(max_length=255)
-    description = models.TextField()
-    length = models.DurationField()
+    podcast_episode_number = models.PositiveIntegerField()
+    podcast_episode_lay_count = models.PositiveIntegerField(default=0)
+    podcast_episode_title = models.CharField(max_length=255)
+    podcast_episode_description = models.TextField()
+    podcast_episode_length = models.DurationField()
     explicit = models.BooleanField(default=False)
-    audio_file = models.FileField(upload_to='podcasts/episodes/')
-    publish_date = models.DateTimeField(default=timezone.now)
-    creator = models.ForeignKey(CustomUser, related_name='created_episodes', on_delete=models.SET_NULL, null=True)
+    podcast_episode_audio_file = models.FileField(upload_to='podcasts/episodes/')
+    podcast_episode_publish_date = models.DateTimeField(default=timezone.now)
+    podcast_episode_creator = models.ForeignKey(CustomUser, related_name='created_episodes', on_delete=models.SET_NULL, null=True)
     STATUS_CHOICES = [
         ('draft', 'Draft'),
         ('published', 'Published'),
         ('archived', 'Archived'),
     ]
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+    podcast_episode_status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
 
     class Meta:
         unique_together = ('podcast', 'episode_number')

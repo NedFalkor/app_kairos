@@ -7,8 +7,8 @@ class LiveStreamViewer(models.Model):
                              on_delete=models.CASCADE)
     live_stream = models.ForeignKey('LiveStream',
                                     on_delete=models.CASCADE)
-    join_time = models.DateTimeField(auto_now_add=True)
-    leave_time = models.DateTimeField(null=True,
+    viewer_join_time = models.DateTimeField(auto_now_add=True)
+    viewer_leave_time = models.DateTimeField(null=True,
                                       blank=True)
     STATUS_CHOICES = [
         ('watching', 'Watching'),

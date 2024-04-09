@@ -3,9 +3,9 @@ from django.conf import settings
 
 
 class UserChannel(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='channel')
-    name = models.CharField(max_length=255, unique=True)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='user_channels')
+    live_stream_user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='channel')
+    channel_name = models.CharField(max_length=255, unique=True)
+    channel_category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='user_channels')
     channel_description = models.TextField(blank=True, null=True)
     channel_thumbnail = models.ImageField(upload_to='channels/thumbnails/', blank=True, null=True)
     channel_created_at = models.DateTimeField(auto_now_add=True)
