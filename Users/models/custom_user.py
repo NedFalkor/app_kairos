@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 
 class CustomUserManager(BaseUserManager):
@@ -25,10 +26,16 @@ class CustomUser(AbstractUser):
     username = models.CharField(max_length=150, unique=True, null=True, blank=True)
     email = models.EmailField(_('email address'), unique=True)
 
+    custom_user_is_staff = models.BooleanField(default=False)
+    custom_user_is_active = models.BooleanField(default=True)
+    custom_user_created_at = models.DateTimeField(default=timezone.now)
+    custom_user_updated_at = models.DateTimeField(auto_now=True)
+    custom_user_deleted_at = models.DateTimeField(null=True, blank=True)
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
 
     def __str__(self):
-        return f"{self.email}"
+        return self.email

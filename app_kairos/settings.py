@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
 
+    'corsheaders',
     'storages',
 
     # Applications de votre projet
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'werkzeug.debug.DebuggedApplication',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -45,6 +47,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
 ]
 
 ROOT_URLCONF = 'app_kairos.urls'
@@ -91,7 +100,6 @@ PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.CryptPasswordHasher',
 ]
 
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -108,8 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'Users.CustomUser'
-
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -135,4 +141,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'app_medias')
 
 VIDEO_MEDIA_ROOT = os.path.join(MEDIA_ROOT, 'videos')
 THUMBNAIL_MEDIA_ROOT = os.path.join(MEDIA_ROOT, 'thumbnails')
-

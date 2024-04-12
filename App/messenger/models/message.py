@@ -16,4 +16,4 @@ class Message(models.Model):
     message_type = models.CharField(max_length=4, choices=TYPE_CHOICES, default='chat')
 
     def __str__(self):
-        return f'Message from {self.sender} to {self.recipient}'
+        return f'Message from {self.message_sender} to {self.message_recipient}'

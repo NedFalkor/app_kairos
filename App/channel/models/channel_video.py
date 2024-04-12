@@ -12,6 +12,8 @@ class ChannelVideo(models.Model):
     video_views = models.IntegerField(default=0)
     video_categories = models.ManyToManyField('Category', related_name='videos')
     video_file = models.FileField(upload_to='channel_videos/', null=True, blank=True)
+    video_duration = models.DurationField()
+    explicit = models.BooleanField(default=False)
 
     def __str__(self):
         return self.video_title
